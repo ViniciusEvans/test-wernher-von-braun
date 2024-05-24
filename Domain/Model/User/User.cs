@@ -6,14 +6,16 @@ public class User
 
     public string Name { get; set; }
 
-    public Email Email { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
 
     protected User() { }
 
-    public User(string name, string email)
+    public User(string name, string email, string password)
     {
         Id = Guid.NewGuid();
         Name = name;
-        Email = new Email(email);
+        Email = email;
+        Password = password;
     }
 }

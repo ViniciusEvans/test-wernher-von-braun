@@ -1,4 +1,3 @@
-using Domain.Common;
 using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
 using System.Net;
@@ -17,7 +16,7 @@ public static class GlobalExceptionHandlers
 
                 if (exception != null)
                 {
-                    context.Response.StatusCode = exception.Error is ApplicationLayerException ? (int)HttpStatusCode.BadRequest : (int)HttpStatusCode.InternalServerError;
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     context.Response.ContentType = "application/json";
 
                     await context.Response.WriteAsync(JsonConvert.SerializeObject(new

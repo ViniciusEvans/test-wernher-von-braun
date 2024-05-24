@@ -1,7 +1,7 @@
 using Application;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DotnetBoilerplate.Controllers;
+namespace IoTDeviceManagerService.Controllers;
 
 [ApiController]
 [Route("users")]
@@ -15,9 +15,9 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(string name, string email)
+    public async Task<IActionResult> Create(string name, string email, string password)
     {
-        await service.Create(name, email);
+        await service.Create(name, email,password);
 
         return CreatedAtAction(nameof(Create), null);
     }

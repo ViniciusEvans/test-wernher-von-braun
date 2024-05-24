@@ -9,10 +9,10 @@ public class UserService
 
     public UserService(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-    public async Task Create(string name, string email)
+    public async Task Create(string name, string email, string password)
     {
-        var user = new User(name, email);
-        await _unitOfWork.Users.Store(user);
-        await _unitOfWork.Complete();
+        // var user = new User(name, email, password);
+        // await _unitOfWork.Users.Store(user);
+        // await _unitOfWork.Complete();
     }
 }
