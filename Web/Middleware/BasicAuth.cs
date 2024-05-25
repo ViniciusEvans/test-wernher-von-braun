@@ -31,8 +31,11 @@ public class BasicAuth
         }
 
         var header = context.Request.Headers["Authorization"].ToString();
-        var encodedCreds = header.Substring(6);
+
+        var encodedCreds = header;
+
         var cred = Encoding.UTF8.GetString(Convert.FromBase64String(encodedCreds));
+
         string[] uidpwd = cred.Split(":");
         var uid = uidpwd[0];
         var password = uidpwd[1];
