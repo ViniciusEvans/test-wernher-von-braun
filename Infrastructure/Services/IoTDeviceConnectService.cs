@@ -9,7 +9,6 @@ public class IotDeviceConnectService
         _telnetClient.Connect(url, 23);
 
         Login("", "");
-        ReceiveData();
     }
 
     public void Login(string user, string password)
