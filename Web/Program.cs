@@ -1,5 +1,6 @@
 using Infrastructure;
 using Web;
+using Web.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<BasicAuth>();
 app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthorization();
