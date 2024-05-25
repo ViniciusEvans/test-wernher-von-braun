@@ -21,6 +21,7 @@ Para executar o projeto, é necessário:
 
 Após instalado
 
+caminhe pelo prompt até o api/src/ e execute o comando a seguir para rodar a api:
 
 ```bash
 dotnet run --project Web
