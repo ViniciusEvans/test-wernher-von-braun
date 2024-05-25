@@ -21,7 +21,8 @@ public class TelnetClient
 		Thread.Sleep(2000);
 
 		byte[] buffer = new byte[1_024];
-
+		
+		_socket.ReceiveTimeout = 5000;
 		_socket.Client.Receive(buffer);
 
 		response.Append(Encoding.UTF8.GetString(buffer));
