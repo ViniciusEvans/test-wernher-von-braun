@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IoTDeviceManagerService.Controllers;
 
 [ApiController]
-[Route("Devices")]
+[Route("devices")]
 public class DeviceController : ControllerBase
 {
 	private readonly DeviceService deviceService;
@@ -66,7 +66,7 @@ public class DeviceController : ControllerBase
 		return Ok(null);
 	}
 
-	[HttpPost("send-command")]
+	[HttpPost("{id}/send-command")]
 	public async Task<IActionResult> SendDevice(Guid id, Command command)
 	{
 		var device = await deviceService.GetDeviceById(id);
@@ -77,9 +77,14 @@ public class DeviceController : ControllerBase
 		}
 
 		iotDeviceConnectService.ConnectToDevice(device.Url);
-		iotDeviceConnectService.SendCommand("");
+
 		iotDeviceConnectService.SendCommand(command.command);
+
 		var dataReceived = iotDeviceConnectService.ReceiveData();
+
+		iotDeviceConnectService.CloseConnection();
+
+		Console.WriteLine("dataReceived");
 		Console.WriteLine(dataReceived);
 
 		return Ok(dataReceived);
