@@ -28,6 +28,9 @@ dotnet run --project Web
 
 Para testar o client de telnet para executar alguns comandos (Ex.: 'ls', 'mkdir', 'cd', etc.) e receber dados de dispositivos remotos, recomendo utilizar o mobaXterm para criar o servidor telnet temporário localmente simular conexão com dispositivo iot remoto, assim você poderá executar os comandos na sua propria máquina e ver os resultados;
 
+link para download: https://mobaxterm.mobatek.net/download.html
+
+
 
 Decisões:
 
