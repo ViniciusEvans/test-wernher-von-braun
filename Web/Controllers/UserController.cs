@@ -36,7 +36,7 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Login(string email, string password)
     {
         var user = UserList.Users.Find(user => user.Email == email);
-
+        
         if (user == null)
         {
             return NotFound("Credentials are incorrect");
@@ -47,6 +47,8 @@ public class UserController : ControllerBase
             return BadRequest("Credentials are incorrect");
         }
 
-        return Ok(Convert.ToBase64String(Encoding.ASCII.GetBytes(user.Id + ":" + user.Password)));
+        var encodedToken = Convert.ToBase64String(Encoding.UTF8.GetBytes(user.Id + ":" + user.Password));
+
+        return Ok(encodedToken);
     }
 }
