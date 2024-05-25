@@ -8,13 +8,13 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly DatabaseContext _context;
     public IUserRepository Users { get; }
-    public IBasketRepository Baskets { get; }
+    public IDeviceRepository Devices { get; }
 
     public UnitOfWork(DatabaseContext context)
     {
         _context = context;
         Users = new UserRepository(context);
-        Baskets = new BasketRepository(context);
+        Devices = new DeviceRepository(context);
     }
 
     public async Task<int> Complete()
@@ -24,7 +24,7 @@ public class UnitOfWork : IUnitOfWork
 
     public void Dispose()
     {
-        _context?.Dispose(); 
+        _context?.Dispose();
         GC.SuppressFinalize(this);
     }
 }

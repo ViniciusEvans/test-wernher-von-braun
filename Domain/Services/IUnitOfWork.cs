@@ -5,6 +5,6 @@ namespace Domain.Services;
 public interface IUnitOfWork : IDisposable
 {
     IUserRepository Users { get; }
-    IBasketRepository Baskets { get; }
+    IDeviceRepository Devices { get; }
     Task<int> Complete();
 }
